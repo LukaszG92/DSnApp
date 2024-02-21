@@ -354,9 +354,9 @@ class Snake extends React.Component {
                 <GameOver
                     width={this.state.width}
                     height={this.state.height}
-                    highScore={this.state.highScore}
-                    newHighScore={this.state.newHighScore}
                     score={this.state.score}
+                    mintTokens={this.props.mintTokens}
+                    address={this.props.address}
                 />
             )
         }
@@ -395,8 +395,7 @@ class Snake extends React.Component {
                     }}
                 />
                 <div id='Score' style={{ fontSize: this.state.width / 20 }}>
-                    HIGH-SCORE: {this.state.highScore}&ensp;&ensp;&ensp;&ensp;SCORE:{' '}
-                    {this.state.score}
+                    SCORE:{' '}{this.state.score}
                 </div>
             </div>
         )

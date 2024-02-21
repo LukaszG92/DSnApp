@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSDK } from "@metamask/sdk-react"
 import styled from "styled-components"
 
-const Wallet = ({setLoggedIn}) => {
+const Wallet = ({setLoggedIn, setAddress}) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [defaultAccount, setDefaultAccount] = useState(null);
 
@@ -13,6 +13,7 @@ const Wallet = ({setLoggedIn}) => {
             const accounts = await sdk.connect();
             setErrorMessage(null)
             setDefaultAccount(accounts[0])
+            setAddress(accounts[0])
             setLoggedIn(true)
         } else {
             setErrorMessage("Please Install Metamask!!!");
@@ -26,6 +27,7 @@ const Wallet = ({setLoggedIn}) => {
                 :
                 <button onClick={() => {
                     setDefaultAccount(null)
+                    setAddress(null)
                     setLoggedIn(false)
                 }}>Logout</button>
             }
