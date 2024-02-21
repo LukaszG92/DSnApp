@@ -7,6 +7,7 @@ frontend/node_modules
 .pnp.js
 backend/package-lock.json
 frontend/package-lock.json
+backend/scripts/.env
 .idea
 
 # testing
