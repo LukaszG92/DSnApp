@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 function GameOver({width, height, address, score, mintTokens}) {
-    mintTokens(address, score)
+
+    useEffect(() => {
+        mintTokens(address, score)
+    }, [address, mintTokens, score]);
 
     return (
         <div

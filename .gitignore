@@ -7,7 +7,7 @@ frontend/node_modules
 .pnp.js
 backend/package-lock.json
 frontend/package-lock.json
-backend/scripts/.env
+backend/src/scripts/.env
 .idea
 
 # testing
@@ -15,7 +15,8 @@ backend/scripts/.env
 
 # production
 /build
-backend/contracts/compiled_contracts
+.env
+backend/src/contracts/compiled_contracts
 
 # misc
 .DS_Store
