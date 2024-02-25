@@ -14,7 +14,10 @@ function App() {
     const [address, setAddress] = useState(null);
 
     const mintTokens = async (walletAddress, score) => {
-        console.log("Starting mintTokens ...")
+        if (score === 0){
+            NotificationManager.warning('You cannot mint 0 token', 'No token to mint', 2000)
+            return
+        }
         let response = await fetch('http://localhost:8000/api/mintTokens');
         console.log(response)
         let responseData = await response.json();

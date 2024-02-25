@@ -394,11 +394,16 @@ class Snake extends React.Component {
                         background: this.state.appleColor,
                     }}
                 />
-                <div id='Score' style={{ fontSize: this.state.width / 20 }}>
+                <div id='Score' style={{fontSize: this.state.width / 20}}>
                     SCORE:{' '}{this.state.score}
-                    <button style={{padding:'7px', margin:"20px"}} onClick={() => {
-                        this.setState({ isGameOver: true })
-                    }}>Game Over</button>
+                    <button style={{padding: '7px', margin: "20px"}} onClick={() => {
+                        this.setState({isGameOver: true})
+                    }}>Game Over
+                    </button>
+                    <button style={{padding: '7px', margin: "20px"}} onClick={() => {
+                        this.setState({score: this.state.score+1})
+                    }}>Increase Score
+                    </button>
                 </div>
             </div>
         )

@@ -8,17 +8,15 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <React.StrictMode>
-        <MetaMaskProvider
-            debug={false}
-            sdkOptions={{
-                dappMetadata: {
-                    name: "DSnApp",
-                    url: window.location.href,
-                },
-            }}
-        >
-            <App />
-        </MetaMaskProvider>
-    </React.StrictMode>
+    <MetaMaskProvider
+        debug={false}
+        sdkOptions={{
+            dappMetadata: {
+                name: "DSnApp",
+                url: window.location.href,
+            },
+        }}
+    >
+        <App />
+    </MetaMaskProvider>
 );
