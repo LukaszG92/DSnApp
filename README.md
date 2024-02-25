@@ -4,9 +4,14 @@ DApp based on the Snake videogame
 
 ## Setup you enviroment
 
-To follow the following instructions you need to have Ganache installed.
+First of all we need to **install Ganache**
 
-First of all **start the ganache test blockchain**, you can define the port on which the server will listen:
+```bash
+npm install -g ganache
+```
+
+First of all **start the Ganache test blockchain**, you can define the port on which the server will listen:
+
  ```bash 
   ganache [--server.port <port>]
 ```
@@ -48,7 +53,55 @@ Now you have to set as  environment variable with one of this account, e.g. usin
 export GANACHE_ADDRESS=0xc81c61BE4607cC6b5c5D8300161eeb280F4a8287
 ```
 
+Now we have to **compile the Smart Contract**, first of all we need to install the Solidity Compiler
 
+```bash
+npm install -g solc
+```
+
+The we have to get the contract's bin and abi
+
+```bash
+cd ./backend/src/contracts
+solcjs solcjs --bin --abi --include-path ../../node_modules/ --base-path contracts/ --output-dir ./compiled_contracts DSnAppToken.sol
+```
+
+After this we have to setup two enviroment variables containg the contract's abi and bin filenames
+
+```bash
+export BIN_FILENAME=<contract-filename.bin>
+export ABI_FILENAME=<contract-filename.abi>
+```
+
+Now we have to **deploy the Smart Contract** on the Ganache blockchain
+
+```bash
+cd ../scripts
+node DSnAppTokenDeploy.js
+```
+
+If the deployment is successful on the Ganache terminal we will see something like this
+
+```bash
+eth_getBlockByNumber
+eth_blockNumber
+eth_sendTransaction
+
+  Transaction: 0xfc136e7f9d414855ec2d69d8be06b4d14aa3c050e8cde02bcaad7449227c490d
+  Contract created: 0x228fb69e72254e6dda41c6ee75f633120439b409
+  Gas usage: 1027935
+  Block number: 1
+  Block time: Sun Feb 25 2024 16:19:17 GMT+0100 (GMT+01:00)
+
+eth_getTransactionReceipt
+eth_blockNumber
+```
+
+We need to save the **Contract addres** in another enviroment variable
+
+```bash
+export CONTRACT_ADDRESS='0x228fb69e72254e6dda41c6ee75f633120439b409'
+```
 
 ## References
 This repository borrows partially from [react-simple-snake](https://github.com/MaelDrapier/react-simple-snake/tree/master) repository.
