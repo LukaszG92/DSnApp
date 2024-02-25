@@ -1,4 +1,5 @@
 # DSnApp
+
 DApp based on the Snake videogame
 
 
@@ -137,4 +138,11 @@ And insert the previously seen **Contract address* as *"Token Contract Address"*
 Now you are ready to play DSnApp!
 
 ## References
+
 This repository borrows partially from [react-simple-snake](https://github.com/MaelDrapier/react-simple-snake/tree/master) repository.
+
+## License
+
+This project is distributed under the [GNU General Public License v3](LICENSE).
+
+![GPLv3Logo](https://www.gnu.org/graphics/gplv3-127x51.png)
