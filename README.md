@@ -106,23 +106,33 @@ export CONTRACT_ADDRESS='0x228fb69e72254e6dda41c6ee75f633120439b409'
 The last step to complete our setup is download and setup the Metamask browser extension from this link: https://metamask.io/download/
 Now you have to create you accunt, and after this we have to connect Metamask to Ganache, from the popup select the network in the left-upper corner e from the menu select *"Add network"*
 
-<img width="416" alt="Screenshot 2024-02-25 alle 18 25 17" src="https://github.com/LukaszG92/DSnApp/assets/128072825/39cc3258-9272-437f-8ca5-e450743a9126">
+<p align="center">
+ <img width="416" alt="Screenshot 2024-02-25 alle 18 25 17" src="https://github.com/LukaszG92/DSnApp/assets/128072825/39cc3258-9272-437f-8ca5-e450743a9126">
+</p>
 
 Now you have to select *"Add a network manually"*
 
-<img width="924" alt="Screenshot 2024-02-25 alle 18 26 13" src="https://github.com/LukaszG92/DSnApp/assets/128072825/ee08c03c-e80f-4683-a6ec-79f8cd737e1d">
+<p align="center">
+ <img width="924" alt="Screenshot 2024-02-25 alle 18 26 13" src="https://github.com/LukaszG92/DSnApp/assets/128072825/ee08c03c-e80f-4683-a6ec-79f8cd737e1d">
+</p>
 
 Setup the Network as follows:
 
-<img width="728" alt="Screenshot 2024-02-25 alle 18 29 26" src="https://github.com/LukaszG92/DSnApp/assets/128072825/3870de68-3a69-46ae-9fc3-d66529275e80">
+<p align="center">
+ <img width="728" alt="Screenshot 2024-02-25 alle 18 29 26" src="https://github.com/LukaszG92/DSnApp/assets/128072825/3870de68-3a69-46ae-9fc3-d66529275e80">
+</p>
 
 From the Ganache network select now *"Import tokens"*
 
-<img width="927" alt="Screenshot 2024-02-25 alle 18 30 52" src="https://github.com/LukaszG92/DSnApp/assets/128072825/dc0cd4fc-e5c6-46da-882e-42492534c9b5">
+<p align="center">
+ <img width="927" alt="Screenshot 2024-02-25 alle 18 30 52" src="https://github.com/LukaszG92/DSnApp/assets/128072825/dc0cd4fc-e5c6-46da-882e-42492534c9b5">
+</p>
 
 And insert the previously seen **Contract address* as *"Token Contract Address"*, click on *"Next"* and then click *"Import"*
 
-<img width="386" alt="Screenshot 2024-02-25 alle 18 32 25" src="https://github.com/LukaszG92/DSnApp/assets/128072825/8423bc54-720a-4071-a0b0-87907844da32">
+<p align="center">
+ <img width="386" alt="Screenshot 2024-02-25 alle 18 32 25" src="https://github.com/LukaszG92/DSnApp/assets/128072825/8423bc54-720a-4071-a0b0-87907844da32">
+</p>
 
 Now you are ready to play DSnApp!
 
