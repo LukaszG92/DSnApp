@@ -1,19 +1,30 @@
-import React, { useState } from 'react'
-import { useSDK } from "@metamask/sdk-react"
+import React, {useState} from 'react'
 import styled from "styled-components"
 
 const Wallet = ({setLoggedIn, setAddress}) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [defaultAccount, setDefaultAccount] = useState(null);
 
-    const { sdk} = useSDK();
+    async function requestAccount() {
+        try {
+            const accounts = await window.ethereum.request({
+                method: 'eth_requestAccounts',
+            });
+            console.log(accounts)
+            return accounts[0];
+        } catch (error) {
+            console.error('User denied account access');
+            return null;
+        }
+    }
 
     const connectWalletHandler = async () => {
         if (window.ethereum) {
-            const accounts = await sdk.connect();
+            const account = await requestAccount()
+            console.log(account)
             setErrorMessage(null)
-            setDefaultAccount(accounts[0])
-            setAddress(accounts[0])
+            setDefaultAccount(account)
+            setAddress(account)
             setLoggedIn(true)
         } else {
             setErrorMessage("Please Install Metamask!!!");
@@ -32,7 +43,7 @@ const Wallet = ({setLoggedIn, setAddress}) => {
                 }}>Logout</button>
             }
             <div className="TopbarLeft">
-            {errorMessage &&
+                {errorMessage &&
                     <span className="TopbarText">{errorMessage}</span>
                 }
                 {defaultAccount &&

@@ -5,6 +5,7 @@
   "dependencies": {
     "@metamask/sdk-react": "^0.15.0",
     "dotenv-webpack": "^8.0.1",
+    "jsurl": "^0.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-notifications": "^1.7.4",

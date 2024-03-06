@@ -1,11 +1,15 @@
 const fs = require('fs');
 const path = require("path");
+const {Web3} = require('web3')
 require('dotenv').config({path:path.resolve(__dirname, '..', '.env')})
 
-exports.mintTokens = (req, res) => {
-    let abi = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'contracts', 'compiled_contracts', process.env.ABI_FILENAME)).toString())
+let ganachePort = 8545
+let web3 = new Web3(`http://localhost:${ganachePort}`)
 
-    console.log(abi);
+
+exports.getToken = async (req, res) => {
+    let abi = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'contracts', 'compiled_contracts', 'DSnAppToken.abi')).toString())
+
     if(!abi){
         return res.status(500).send({
             status: "failure",
@@ -13,9 +17,8 @@ exports.mintTokens = (req, res) => {
         })
     }
 
-    let contractAddress = process.env.CONTRACT_ADDRESS
+    let contractAddress = process.env.TOKEN_ADRS;
 
-    console.log(contractAddress)
     if(!contractAddress){
         return res.status(500).send({
             status: "failure",
@@ -23,10 +26,10 @@ exports.mintTokens = (req, res) => {
         })
     }
 
-    let ganacheAddress = process.env.GANACHE_ADDRESS
+    let accounts = await web3.eth.getAccounts();
+    let ownerAddress = accounts[0];
 
-    console.log(ganacheAddress)
-    if(!ganacheAddress){
+    if(!ownerAddress){
         return res.status(500).send({
             status: "failure",
             message: "Cannot retrieve the ganache deployer address"
@@ -39,7 +42,7 @@ exports.mintTokens = (req, res) => {
         data: {
             abi: abi,
             contractAddress: contractAddress,
-            ganacheAddress: ganacheAddress
+            ownerAddress: ownerAddress
         }
     })
 }

@@ -23,6 +23,7 @@ class Snake extends React.Component {
             isGameOver: false,
             snakeColor: this.props.snakeColor || '#000000',
             appleColor: this.props.appleColor || '#FF0000',
+            borderColor: this.props.borderColor || '#000000',
             score: 0,
             highScore: Number(localStorage.getItem('snakeHighScore')) || 0,
             newHighScore: false,
@@ -33,6 +34,12 @@ class Snake extends React.Component {
         this.initGame()
         window.addEventListener('keydown', this.handleKeyDown)
         this.gameLoop()
+    }
+
+    componentDidUpdate(props){
+        this.state.snakeColor = this.props.snakeColor;
+        this.state.appleColor = this.props.appleColor;
+        this.state.borderColor = this.props.borderColor;
     }
 
     initGame() {
@@ -368,6 +375,7 @@ class Snake extends React.Component {
                     width: this.state.width,
                     height: this.state.height,
                     borderWidth: this.state.width / 50,
+                    borderColor: this.state.borderColor,
                 }}>
                 {this.state.snake.map((snakePart, index) => {
                     return (
@@ -400,9 +408,8 @@ class Snake extends React.Component {
                         this.setState({isGameOver: true})
                     }}>Game Over
                     </button>
-                    <button style={{padding: '7px', margin: "20px"}} onClick={() => {
-                        this.setState({score: this.state.score+1})
-                    }}>Increase Score
+                    <button style={{padding: '7px', margin: "20px"}} onClick={this.props.buySkin}>
+                        Buy Skin
                     </button>
                 </div>
             </div>

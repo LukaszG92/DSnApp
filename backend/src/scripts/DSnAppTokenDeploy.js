@@ -3,24 +3,26 @@ const path = require('path')
 const {Web3} = require('web3')
 require('dotenv').config({path:path.resolve(__dirname, '..', '..', '..', '.env')})
 
-console.log(path.resolve(__dirname, '..', '..', '..', '.env'))
-
 let ganachePort = 8545
 let web3 = new Web3(`http://localhost:${ganachePort}`)
 
-console.log(process.env.BIN_FILENAME)
-console.log(process.env.ABI_FILENAME)
+let tokenBin = fs.readFileSync(path.resolve(__dirname, '..', 'contracts', 'compiled_contracts', 'DSnAppToken.bin')).toString()
+let tokenAbi = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'contracts', 'compiled_contracts', 'DSnAppToken.abi')).toString())
 
-let bytecode = fs.readFileSync(path.resolve(__dirname, '..', 'contracts', 'compiled_contracts', process.env.BIN_FILENAME)).toString()
-let abi = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'contracts', 'compiled_contracts', process.env.ABI_FILENAME)).toString())
+let DSnAppToken = new web3.eth.Contract(tokenAbi)
 
-let DSnAppToken = new web3.eth.Contract(abi)
+const deploy = async () => {
+    let accounts = await web3.eth.getAccounts();
+    let deploymentAccount = accounts[0];
 
-DSnAppToken.deploy({data:bytecode})
-    .send({
-        from: process.env.GANACHE_ADDRESS,
-        gas: 1500000
-    })
-    .then(newContractInstance => {
-        DSnAppToken.options.address = newContractInstance.options.address
-    });
+    let token =
+        await DSnAppToken.deploy({data: tokenBin})
+        .send({
+            from: deploymentAccount,
+            gas: 3000000
+        })
+
+    console.log(`Token address: ${token.options.address}`)
+}
+
+deploy()
